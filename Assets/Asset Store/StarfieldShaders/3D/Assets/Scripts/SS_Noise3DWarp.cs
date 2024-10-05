@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using UnityEngine;
+using VSX.UniversalVehicleCombat;
 
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshFilter))]
@@ -34,6 +36,8 @@ public class SS_Noise3DWarp : SS_AGenerator
     [Range(0.1f, 1f)]
     public float noiseScale2 = 1;
 
+    private Coroutine animationCoroutine;
+
     private float RandomFloat { get { return Random.Range(-5000f, 0f); } }
     private Vector3 RandomVector { get { return new Vector3(RandomFloat, RandomFloat, RandomFloat); } }
 
@@ -43,6 +47,61 @@ public class SS_Noise3DWarp : SS_AGenerator
     {
         if (animate)
             Animate();
+    }
+
+    // Coroutine to animate the values
+    public IEnumerator AnimateValues(float targetOpacity, float targetBlackout, float duration) {
+        float initialOpacity = opacity;
+        float initialBlackout = blackout;
+
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration) {
+            timeElapsed += Time.deltaTime;
+            float t = timeElapsed / duration;
+
+            // Lerp the values based on the time elapsed
+            opacity = Mathf.Lerp(initialOpacity, targetOpacity, t);
+            blackout = Mathf.Lerp(initialBlackout, targetBlackout, t);
+
+            // Apply the changes to the material
+            SetShaderData();
+
+            yield return null;
+        }
+
+        // Ensure the final values are set exactly at the end
+        opacity = targetOpacity;
+        blackout = targetBlackout;
+        SetShaderData();
+    }
+
+    public void StartAnimating() {
+        // Stop any ongoing animation coroutine
+        if (animationCoroutine != null) {
+            StopCoroutine(animationCoroutine);
+        }
+
+        // Start animating to the target values
+        animationCoroutine = StartCoroutine(AnimateValues(0.3f, 0.7f, 5f));
+    }
+
+    public void BoostWarpAnimation() {
+        if (animationCoroutine != null) {
+            StopCoroutine(animationCoroutine);
+        }
+
+        // Start animating to the target values
+        animationCoroutine = StartCoroutine(AnimateValues(0.9f, 3f, 0.5f));
+    }
+
+    public void EndWarpAnimation() {
+        if (animationCoroutine != null) {
+            StopCoroutine(animationCoroutine);
+        }
+
+        // Start animating to the target values
+        animationCoroutine = StartCoroutine(AnimateValues(0f, -1f, 0.5f));
     }
 
     private void Animate()

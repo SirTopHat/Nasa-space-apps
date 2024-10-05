@@ -24,10 +24,12 @@
 		LOD 100
 		Cull Front
 		ZWrite Off
+		// ZWrite On
 
 		Pass
 		{
 			Blend SrcAlpha One
+			//Blend SrcAlpha OneMinusSrcAlpha
 
 			CGPROGRAM
 			#pragma vertex vert

@@ -43,10 +43,13 @@ public class SS_Starfield3DWarp : SS_AGeneratorStarfield
     [Range(0f, 999f)]
     public float offset;
 
+    private Coroutine animationCoroutine;
+
     protected override void OnStart()
     {
         base.OnStart();
         SetMeshBounds();
+        SetShaderData();
     }
 
     protected override void OnMaterialCreated() { }
@@ -54,6 +57,64 @@ public class SS_Starfield3DWarp : SS_AGeneratorStarfield
     void Update()
     {
         Animate();
+    }
+
+    // Coroutine to animate the values
+    public IEnumerator AnimateValues(float targetOpacity, float targetWarp, float targetSize, float duration) {
+        float initialOpacity = opacity;
+        float initialWarp = warp;
+        float initialSize = size;
+
+        float timeElapsed = 0f;
+
+        while (timeElapsed < duration) {
+            timeElapsed += Time.deltaTime;
+            float t = timeElapsed / duration;
+
+            // Lerp the values based on the time elapsed
+            opacity = Mathf.Lerp(initialOpacity, targetOpacity, t);
+            warp = Mathf.Lerp(initialWarp, targetWarp, t);
+            size = Mathf.Lerp(initialSize, targetSize, t);
+
+            // Apply the changes to the material
+            SetShaderData();
+
+            yield return null;
+        }
+
+        // Ensure the final values are set exactly at the end
+        opacity = targetOpacity;
+        warp = targetWarp;
+        size = targetSize;
+        SetShaderData();
+    }
+
+    public void StartAnimating() {
+        // Stop any ongoing animation coroutine
+        if (animationCoroutine != null) {
+            StopCoroutine(animationCoroutine);
+        }
+
+        // Start animating to the target values
+        animationCoroutine = StartCoroutine(AnimateValues(1f, 0.55f, 1f, 5f));
+    }
+
+    public void BoostWarpAnimation() {
+        if (animationCoroutine != null) {
+            StopCoroutine(animationCoroutine);
+        }
+
+        // Start animating to the target values
+        animationCoroutine = StartCoroutine(AnimateValues(1f, 0.85f, 1.5f, 0.5f));
+    }
+
+    public void EndWarpAnimation() {
+        if (animationCoroutine != null) {
+            StopCoroutine(animationCoroutine);
+        }
+
+        // Start animating to the target values
+        animationCoroutine = StartCoroutine(AnimateValues(0f, 0f, 0.1f, 0.5f));
     }
 
     private void Animate()
@@ -64,6 +125,10 @@ public class SS_Starfield3DWarp : SS_AGeneratorStarfield
         offset += Time.deltaTime * animationSpeed;
         if (offset > 999f)
             offset -= 999f;
+
+        // ADDED BY ME
+        //MyMaterial = GetComponent<Renderer>().material;
+        // END OF MODIFICATION
         MyMaterial.SetFloat("_Offset", offset);
     }
 
@@ -84,7 +149,12 @@ public class SS_Starfield3DWarp : SS_AGeneratorStarfield
 
     public override void SetShaderData()
     {
+        // Original
         Material mat = ValidatedMaterial();
+
+        // Modified
+        //Material mat = MeshR.sharedMaterial;
+
         mat.SetFloat("_Opacity", opacity);
         mat.SetFloat("_Size", size);
         mat.SetFloat("_SizeNoise", sizeNoise);

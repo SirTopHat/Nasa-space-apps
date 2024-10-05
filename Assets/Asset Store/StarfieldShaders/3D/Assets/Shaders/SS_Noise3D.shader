@@ -32,6 +32,7 @@ Shader "_TS/SS/Noise 3D"
 		Pass
 		{
 			Blend OneMinusDstColor One
+			//Blend SrcAlpha OneMinusSrcAlpha
 
 			CGPROGRAM
 			#pragma vertex vert

@@ -18,7 +18,7 @@
         Tags
         {
             "RenderType"="Transparent"
-            "Queue"="Background+1"
+            "Queue"="Transparent" // original: "Background+1"
             "DisableBatching"="True"
             "ForceNoShadowCasting"="True"
 			"IgnoreProjector"="True"

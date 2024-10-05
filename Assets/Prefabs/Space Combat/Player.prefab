@@ -1,0 +1,404 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &263344299808125087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9040808347317654440}
+  - component: {fileID: 1722687299393623954}
+  m_Layer: 0
+  m_Name: CameraControls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9040808347317654440
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263344299808125087}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4507201199889782783}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1722687299393623954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263344299808125087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f343fa530236b047a61e5c925d4beb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateInputAtStart: 1
+  inputUpdateConditions:
+    evaluationType: 0
+    conditionsList: []
+    onConditionsMet:
+      m_PersistentCalls:
+        m_Calls: []
+    onConditionsFailed:
+      m_PersistentCalls:
+        m_Calls: []
+  debugInitialization: 0
+  startingVehicle: {fileID: 0}
+  specifyCompatibleVehicleClasses: 0
+  compatibleVehicleClasses: []
+  cameraEntity: {fileID: 0}
+  cycleViewForwardInput:
+    group: Camera Controls
+    action: Cycle camera view forward.
+    inputType: 0
+    key: 93
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: 
+  cycleViewBackwardInput:
+    group: Camera Controls
+    action: Cycle camera view backward.
+    inputType: 0
+    key: 91
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: 
+  cameraViewInputs: []
+  freeLookSpeed: 1
+  disableEngineControlsInFreeLookMode: 1
+  clearSteeringInputsInFreeLookMode: 1
+  freeLookModeInput:
+    group: Camera Controls
+    action: Free look mode.
+    inputType: 0
+    key: 304
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: 
+  lookHorizontalInput:
+    group: Camera Controls
+    action: Free look horizontal.
+    inputType: 2
+    key: 0
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: Mouse X
+  lookVerticalInput:
+    group: Camera Controls
+    action: Free look vertical.
+    inputType: 2
+    key: 0
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: Mouse Y
+--- !u!1 &467463890233096202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1810058304927299323}
+  - component: {fileID: 5722988104225618068}
+  m_Layer: 0
+  m_Name: SpaceFighterControls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1810058304927299323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467463890233096202}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4507201199889782783}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5722988104225618068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467463890233096202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1444117bfd2e447af0d8c4f835bd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activateInputAtStart: 1
+  inputUpdateConditions:
+    evaluationType: 0
+    conditionsList: []
+    onConditionsMet:
+      m_PersistentCalls:
+        m_Calls: []
+    onConditionsFailed:
+      m_PersistentCalls:
+        m_Calls: []
+  debugInitialization: 0
+  startingVehicle: {fileID: 0}
+  specifyCompatibleVehicleClasses: 1
+  compatibleVehicleClasses:
+  - {fileID: 11400000, guid: a3338a580e5cf9240b73308ecde7dd9b, type: 2}
+  linkYawAndRoll: 0
+  yawRollRatio: 1
+  autoRollEnabled: 1
+  autoRollStrength: 0.04
+  maxAutoRoll: 0.2
+  mouseSteeringEnabled: 1
+  mouseSteeringType: 0
+  mouseDeltaXAxisName: Mouse X
+  mouseDeltaYAxisName: Mouse Y
+  mouseVerticalInverted: 0
+  mouseHorizontalInverted: 0
+  mouseDeadRadius: 0.033
+  maxReticleDistanceFromCenter: 0.475
+  reticleMovementSpeed: 20
+  mousePositionInputCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  mouseDeltaPositionSensitivity: 0.75
+  mouseDeltaPositionInputCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2.4303727
+      outSlope: 2.4303727
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.037757456
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  keyboardVerticalInverted: 0
+  keyboardSteeringEnabled: 0
+  pitchAxisInput:
+    group: Flight Controls
+    action: Pitch
+    inputType: 2
+    key: 0
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: Vertical
+  yawAxisInput:
+    group: Flight Controls
+    action: Yaw
+    inputType: 2
+    key: 0
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: Horizontal
+  rollAxisInput:
+    group: Flight Controls
+    action: Roll
+    inputType: 2
+    key: 0
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: Roll
+  throttleUpInput:
+    group: Flight Controls
+    action: Throttle Up
+    inputType: 0
+    key: 119
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: 
+  throttleDownInput:
+    group: Flight Controls
+    action: Throttle Down
+    inputType: 0
+    key: 115
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: 
+  throttleSensitivity: 1
+  setThrottle: 0
+  throttleAxisInput:
+    group: Flight Controls
+    action: Move Forward/Backward
+    inputType: 2
+    key: 0
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: Vertical
+  strafeVerticalInput:
+    group: Flight Controls
+    action: Strafe Vertical
+    inputType: 2
+    key: 0
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: Strafe Vertical
+  strafeHorizontalInput:
+    group: Flight Controls
+    action: Strafe Horizontal
+    inputType: 2
+    key: 0
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: Strafe Horizontal
+  boostInput:
+    group: Flight Controls
+    action: Boost
+    inputType: 0
+    key: 9
+    mouseButton: 0
+    getAxisRaw: 0
+    axis: 
+--- !u!1 &6844210262220730084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4507201199889782783}
+  - component: {fileID: 8105213890854095154}
+  - component: {fileID: 8134476849542831252}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4507201199889782783
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844210262220730084}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1810058304927299323}
+  - {fileID: 9040808347317654440}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8105213890854095154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844210262220730084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37624c68ade23084a912ea929dd48587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: PLAYER
+  isPlayer: 1
+  team: {fileID: 11400000, guid: db9c6365835e2014aad79d9a779edefc, type: 2}
+  startingVehicle: {fileID: 0}
+  onEnteredVehicle:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8134476849542831252}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: SetVehicle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onExitedVehicle:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8134476849542831252}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: ClearReferences
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDied:
+    m_PersistentCalls:
+      m_Calls: []
+  onRevived:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8134476849542831252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844210262220730084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f43764d7b2aec54e9656f0ea6c78fc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HUDActiveGameStates:
+  - {fileID: 11400000, guid: cd7d5c1357684894f994fbf8614020c8, type: 2}

@@ -29,7 +29,8 @@ Shader "_TS/SS/Noise 3D Warp"
 
 		Pass
 		{
-			Blend OneMinusDstColor One
+			Blend SrcAlpha OneMinusSrcAlpha // original
+			//Blend OneMinusDstColor One
 
 			CGPROGRAM
 			#pragma vertex vert

@@ -26,9 +26,9 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8198786238364678030}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -65,10 +65,10 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8198786238364678030}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -92,7 +92,9 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -105,7 +107,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 927154732129746948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_UiScaleMode: 1
@@ -118,6 +120,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &5261060558712422060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 927154732129746948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreReversedGraphics: 1
@@ -147,31 +150,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07a41a076e19c194891a52c942409f29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UICamera: {fileID: 0}
-  updateIndividually: 1
-  activated: 1
+  hudCamera: {fileID: 0}
+  activateOnAwake: 0
+  updateIndividuallyEveryFrame: 0
+  parentToCameraOffset: {x: 0, y: 0, z: 0}
   trackers:
   - {fileID: 0}
-  targetSelectors:
-  - {fileID: 0}
-  targetLockers: []
-  overrideReferenceTransform: {fileID: 0}
   widgetParent: {fileID: 535164924721464592}
-  radarWidgetContainers:
-  - trackableTypes:
-    - {fileID: 11400000, guid: 8d5db5c67d89f284ca28a8950d10e469, type: 2}
-    prefab: {fileID: 1115615047294512, guid: b5a650693a1cc8d4dab6a5afe0791bc3, type: 3}
-    lastUsedIndex: 0
-  enable3D: 0
-  VerticalAxisZ: 1
+  defaultRadarWidget: {fileID: 0}
+  radarWidgetOverrides: []
   widgetScale: 1.25
   clampToBorder: 0
   equatorRadius: 80
   scaleExponent: 1
   maxNewTargetsEachFrame: 1
   defaultWidgetColor: {r: 1, g: 1, b: 1, a: 1}
-  colorOverrideKey: TrackableColor
   teamColors: []
+  display2D: 0
+  VerticalAxisZ: 1
 --- !u!1 &1936892745842020145
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,9 +196,9 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8198786238364678030}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -226,17 +222,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1936892745842020145}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.5, g: 0.83333325, b: 1, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 278abc8a83b97f24eb6b2123eb10734e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -246,6 +242,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3440181338285595490
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,11 +269,11 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 535164924721464592}
   - {fileID: 8452736629857485047}
   m_Father: {fileID: 1345386508620836088}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.05, y: 0.05}
   m_AnchorMax: {x: 0.05, y: 0.05}
