@@ -37,6 +37,8 @@ public class SpaceJumpDriveManager : MonoBehaviour
     public AudioClip audioStartWarp;
     public AudioClip audioWarp;
 
+    public GameObject mapDisclaimer;
+
 
     public Vector3 originalCameraPosition;  // To store the original camera position
     public Quaternion originalCameraRotation;  // To store the original camera rotation
@@ -44,8 +46,8 @@ public class SpaceJumpDriveManager : MonoBehaviour
 
     private void Start() {
         // Save the camera's current position and rotation
-        originalCameraPosition = shipCamera.transform.position;
-        originalCameraRotation = shipCamera.transform.rotation;
+        //originalCameraPosition = shipCamera.transform.position;
+        //originalCameraRotation = shipCamera.transform.rotation;
 
         originSkybox = RenderSettings.skybox;
     }
@@ -89,6 +91,7 @@ public class SpaceJumpDriveManager : MonoBehaviour
 
     public IEnumerator SpaceJumpSequenceIE() {
 
+        mapDisclaimer.SetActive(false);
         warpShaderMesh.SetActive(true);
         warpNoiseShaderMesh.SetActive(true);
 
@@ -137,6 +140,9 @@ public class SpaceJumpDriveManager : MonoBehaviour
         warpShaderMesh.SetActive(false);
         warpNoiseShaderMesh.SetActive(false);
         jumpCoroutine = null;
+
+        yield return new WaitForSeconds(1f);
+        mapDisclaimer.SetActive(true);
     }
 
     void SetDestToOrigin() {
