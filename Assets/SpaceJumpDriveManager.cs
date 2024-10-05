@@ -2,14 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 using UnityEngine;
+using VSX.Effects;
 using VSX.UniversalVehicleCombat;
+using VSX.UniversalVehicleCombat.Space;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
 public class SpaceJumpDriveManager : MonoBehaviour
 {
+    public SimpleMenuManager galaxyMapMenu;
+    bool galaxyMapIsOpen = false;
+
     public GameObject playerShip;
     public GameObject shipCamera;
+
+    public AddRumble warpRumble;
+
+    public SpaceFighterCameraController spaceFighterCameraController;
 
     public GameObject warpShaderMesh;
     public SS_Starfield3DWarp warpSS;
@@ -24,6 +33,10 @@ public class SpaceJumpDriveManager : MonoBehaviour
     public Material originSkybox;
     public Material destinationSkybox;
 
+    public AudioSource audioSource;
+    public AudioClip audioStartWarp;
+    public AudioClip audioWarp;
+
 
     public Vector3 originalCameraPosition;  // To store the original camera position
     public Quaternion originalCameraRotation;  // To store the original camera rotation
@@ -37,10 +50,32 @@ public class SpaceJumpDriveManager : MonoBehaviour
         originSkybox = RenderSettings.skybox;
     }
 
+    public void ToggleGalaxyMap() {
+
+        if (!galaxyMapIsOpen) {
+            galaxyMapMenu.OpenMenu();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        } else {
+            galaxyMapMenu.CloseMenu();
+            Cursor.visible = false;
+        }
+        galaxyMapIsOpen = !galaxyMapIsOpen;
+    }
+
     private void Update() {
         if (Input.GetKeyUp(KeyCode.J)) {
-            StartJumpSequence();
+            //StartJumpSequence();
         }
+
+        if (Input.GetKeyUp(KeyCode.M)) {
+
+            ToggleGalaxyMap();
+        }
+    }
+
+    public void PerformWarpDrive() {
+        StartJumpSequence();
     }
 
     public void StartJumpSequence() {
@@ -60,15 +95,22 @@ public class SpaceJumpDriveManager : MonoBehaviour
         warpSS.StartAnimating();
         warpNoiseSS.StartAnimating();
 
+        warpRumble.Run();
+
+        audioSource.PlayOneShot(audioStartWarp);
+
         // Wait for the jump animation to play out
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(5.1f);
 
         Debug.Log("Boosting");
+        audioSource.PlayOneShot(audioWarp);
+
+        spaceFighterCameraController.isWarping = true;
 
         warpSS.BoostWarpAnimation();
         warpNoiseSS.BoostWarpAnimation();
 
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(7f);
 
         solarSystemOrigin.SetActive(false);
         solarSystemDestination.SetActive(true);
@@ -83,13 +125,28 @@ public class SpaceJumpDriveManager : MonoBehaviour
         shipCamera.transform.rotation = originalCameraRotation;
 
 
+        spaceFighterCameraController.isWarping = false;
+
         warpSS.EndWarpAnimation();
         warpNoiseSS.EndWarpAnimation();
+
+        SetDestToOrigin();
 
         yield return new WaitForSeconds(1f);
         // End coroutine
         warpShaderMesh.SetActive(false);
         warpNoiseShaderMesh.SetActive(false);
         jumpCoroutine = null;
+    }
+
+    void SetDestToOrigin() {
+        solarSystemOrigin = solarSystemDestination;
+        originSkybox = destinationSkybox;
+    }
+
+    public void SetupNextDestination(GameObject nextSolarSystem, Transform nextTransform, Material nextSkybox) {
+        solarSystemDestination = nextSolarSystem;
+        destinationSkybox = nextSkybox;
+        jumpFinishPosition = nextTransform;
     }
 }

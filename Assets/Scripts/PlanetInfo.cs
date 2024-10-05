@@ -6,6 +6,7 @@ public class PlanetInfo : MonoBehaviour
 {
     public string planetName;
     public string planetDetails;
+    public string planetType;
 
     public bool hasDisplayedInfo = false;
 }

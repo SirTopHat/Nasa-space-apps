@@ -9,8 +9,10 @@ public class PlanetInfoDisplay : MonoBehaviour
 {
     public TMP_Text nameText;
     public TMP_Text detailsText;
+    public TMP_Text planetTypeText;
 
     public GameObject planetInfoMenu;
+    public Animator planetInfoAnimator;
 
     public Transform currentPlanetTransform;
     public GameObject planetInfoObjPanel;
@@ -21,7 +23,11 @@ public class PlanetInfoDisplay : MonoBehaviour
 
     bool hasPlanetInSight;
 
+    public AudioSource audioSource;
+    public AudioClip revealTextClip;
+
     void Start() {
+        audioSource = GetComponent<AudioSource>();
         mainCamera = Camera.main; // Get the main camera
         planetNameTextObj.gameObject.SetActive(false); // Initially hide the text
     }
@@ -50,18 +56,29 @@ public class PlanetInfoDisplay : MonoBehaviour
 
         currentPlanetTransform = planetInfo.GetComponent<Transform>();
         planetInfoMenu.SetActive(true);
+        planetInfoAnimator.Play("Appear");
         nameText.text = planetInfo.planetName;
         detailsText.text = planetInfo.planetDetails;
+        planetTypeText.text = "Type: " + planetInfo.planetType;
+
+        audioSource.PlayOneShot(revealTextClip);
+
+
         planetInfo.hasDisplayedInfo = true;
-        Debug.Log("Showing Planet Info");
     }
 
-    public void ShowPlanetDetails(string name, string details, bool hasDisplayed) {
+    public void HidePlanetDetailSound() {
+        audioSource.PlayOneShot(revealTextClip);
+    }
+
+    public void ShowPlanetDetails(string name, string details, string planetType, bool hasDisplayed) {
         hasPlanetInSight = true;
 
         planetInfoMenu.SetActive(true);
         nameText.text = name;
         detailsText.text = details;
+        planetTypeText.text = "Type: " + planetType;
+
         hasDisplayed = true;
         Debug.Log("Showing Planet Info");
     }

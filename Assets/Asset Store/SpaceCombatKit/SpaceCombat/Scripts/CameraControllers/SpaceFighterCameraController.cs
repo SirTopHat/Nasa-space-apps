@@ -17,6 +17,10 @@ namespace VSX.UniversalVehicleCombat.Space
         [SerializeField]
         private float boostFieldOfView = 75;
 
+        [SerializeField]
+        private float warpFieldOfView = 85;
+        public bool isWarping = false;
+
         // How fast the field of view changes when boost is activated or deactivated.
         [SerializeField]
         private float boostFieldOfViewLerpSpeed = 0.1f;
@@ -87,6 +91,15 @@ namespace VSX.UniversalVehicleCombat.Space
                 cameraEntity.SetFieldOfView(Mathf.Lerp(cameraEntity.MainCamera.fieldOfView, targetFieldOfView, boostFieldOfViewLerpSpeed));
                 
             }
+
+            if (isWarping) {
+                float targetFieldOfView = 1 * warpFieldOfView +
+                                    (1 - 1) * cameraEntity.DefaultFieldOfView;
+
+                // Set the new field of view
+                cameraEntity.SetFieldOfView(Mathf.Lerp(cameraEntity.MainCamera.fieldOfView, targetFieldOfView, boostFieldOfViewLerpSpeed));
+            }
+  
 
             // If position and/or rotation are locked for the selected camera view target, the position and rotation must be updated in 
             // late update to make sure that there is no lag.

@@ -25,7 +25,7 @@ public class PlanetProximity : MonoBehaviour {
         // When the player ship leaves the trigger zone, hide the popup
         Debug.Log("Detected Exit");
         if (other.CompareTag("PlayerShip")) {
-            planetInfoDisplay.HidePlanetDetails();
+            //planetInfoDisplay.HidePlanetDetails();
         }
     }
 }

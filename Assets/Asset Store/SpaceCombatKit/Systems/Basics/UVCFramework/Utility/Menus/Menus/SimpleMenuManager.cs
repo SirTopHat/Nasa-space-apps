@@ -39,7 +39,7 @@ namespace VSX.UniversalVehicleCombat
         }
 
         [SerializeField]
-        protected GameObject firstSelected;
+        public GameObject firstSelected;
         protected bool waitingForHighlight = false;
 
         protected bool menuActivated = false;
