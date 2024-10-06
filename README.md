@@ -1,6 +1,7 @@
 Gameplay Video Link: https://youtu.be/RjcEGYj-L0I
 
-Link to the exe files: https://drive.google.com/file/d/1FHDQmOuuU45xyIu1GOfdFNpgFhUmfJ1x/view?usp=drive_link
+Submission folder link (Included exe file and videos):
+https://drive.google.com/drive/folders/19T8BcAzGEI-p9U3SvezWUhWl0CuNxLqn?usp=drive_link
 
 Screenshots:
 ![Gameplay-screenshot-main menu](https://github.com/user-attachments/assets/79ceadf4-a4e4-4bd2-ade6-c34d5640385e)
