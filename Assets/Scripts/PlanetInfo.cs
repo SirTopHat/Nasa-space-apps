@@ -10,5 +10,10 @@ public class PlanetInfo : MonoBehaviour
     public string planetDetails;
     public string planetType;
 
+    [TextArea(3, 8)]
+    public string planetMoreDetails;
+    public Sprite planetImage;
+
     public bool hasDisplayedInfo = false;
+    
 }

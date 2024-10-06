@@ -32,6 +32,6 @@ public class MiniGameManager : MonoBehaviour
 
     private void UpdateScore()
     {
-        scoreText.text = "Dips Detected: " + score + " /3";
+        scoreText.text = "Dips Detected: " + score + " /2";
     }
 }

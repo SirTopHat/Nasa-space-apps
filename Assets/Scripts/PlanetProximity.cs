@@ -6,8 +6,10 @@ public class PlanetProximity : MonoBehaviour {
 
     public PlanetInfoDisplay planetInfoDisplay;
     public PlanetInfo planetInfo;
+    public DetailedInfoPlanetManager detailedInfoPlanetManager;
 
     private void Start() {
+        detailedInfoPlanetManager = FindObjectOfType<DetailedInfoPlanetManager>();
         planetInfoDisplay = FindObjectOfType<PlanetInfoDisplay>();
         planetInfo = GetComponent<PlanetInfo>();
     }
@@ -19,12 +21,18 @@ public class PlanetProximity : MonoBehaviour {
         {
             planetInfoDisplay.ShowPlanetDetails(planetInfo); // Show the popup when ship enters proximity
         }
+
+        detailedInfoPlanetManager.SetDetailedMenuInformation(planetInfo);
+        detailedInfoPlanetManager.SetCanOpenMenu(true);
+        detailedInfoPlanetManager.SetInformationPromptVisible(true);
     }
 
     void OnTriggerExit(Collider other) {
         // When the player ship leaves the trigger zone, hide the popup
         Debug.Log("Detected Exit");
         if (other.CompareTag("PlayerShip")) {
+            detailedInfoPlanetManager.SetCanOpenMenu(false);
+            detailedInfoPlanetManager.SetInformationPromptVisible(false);
             //planetInfoDisplay.HidePlanetDetails();
         }
     }

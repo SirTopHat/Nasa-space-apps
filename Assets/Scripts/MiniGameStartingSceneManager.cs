@@ -9,18 +9,25 @@ public class MiniGameStartingSceneManager : MonoBehaviour
     public GameObject MinigameUI;
     public GameObject TaskCompletedUI;
     public GameObject GameInstructionsUI;
-    public float transitionTime = 3f; 
+    public float transitionTime = 3f;
+
+    bool inMinigame = false; 
 
     void Start() 
     {
         MinigameUI.SetActive(false);
         TaskCompletedUI.SetActive(false);
         GameInstructionsUI.SetActive(false);
-        MinigameStartingUI.SetActive(true);
+        //MinigameStartingUI.SetActive(true);
     }
+
+    public void SetMinigameActive(bool isActive) {
+        inMinigame = isActive;
+    }
+
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) & inMinigame)
         {
             MinigameStartingUI.SetActive(false);
             MinigameUI.SetActive(true);

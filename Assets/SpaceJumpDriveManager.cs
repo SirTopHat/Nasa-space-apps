@@ -13,6 +13,9 @@ public class SpaceJumpDriveManager : MonoBehaviour
     public SimpleMenuManager galaxyMapMenu;
     bool galaxyMapIsOpen = false;
 
+    public SimpleMenuManager minigameMenu;
+    bool minigameIsOpen = false;
+
     public GameObject playerShip;
     public GameObject shipCamera;
 
@@ -38,6 +41,8 @@ public class SpaceJumpDriveManager : MonoBehaviour
     public AudioClip audioWarp;
 
     public GameObject mapDisclaimer;
+    public GameObject minigameDisclaimer;
+    public GameObject tabBoostDisclaimer;
 
 
     public Vector3 originalCameraPosition;  // To store the original camera position
@@ -50,6 +55,15 @@ public class SpaceJumpDriveManager : MonoBehaviour
         //originalCameraRotation = shipCamera.transform.rotation;
 
         originSkybox = RenderSettings.skybox;
+    }
+
+    public void HideCursor() {
+        Cursor.visible = false;
+    }
+
+    public void ShowCursor() {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void ToggleGalaxyMap() {
@@ -65,9 +79,22 @@ public class SpaceJumpDriveManager : MonoBehaviour
         galaxyMapIsOpen = !galaxyMapIsOpen;
     }
 
+    public void ToggleMinigame() {
+
+        if (!minigameIsOpen) {
+            minigameMenu.OpenMenu();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        } else {
+            minigameMenu.CloseMenu();
+            Cursor.visible = false;
+        }
+        minigameIsOpen = !minigameIsOpen;
+    }
+
     private void Update() {
-        if (Input.GetKeyUp(KeyCode.J)) {
-            //StartJumpSequence();
+        if (Input.GetKeyUp(KeyCode.G)) {
+            ToggleMinigame();
         }
 
         if (Input.GetKeyUp(KeyCode.M)) {
@@ -91,6 +118,7 @@ public class SpaceJumpDriveManager : MonoBehaviour
 
     public IEnumerator SpaceJumpSequenceIE() {
 
+        tabBoostDisclaimer.SetActive(false);
         mapDisclaimer.SetActive(false);
         warpShaderMesh.SetActive(true);
         warpNoiseShaderMesh.SetActive(true);
@@ -142,7 +170,9 @@ public class SpaceJumpDriveManager : MonoBehaviour
         jumpCoroutine = null;
 
         yield return new WaitForSeconds(1f);
+        tabBoostDisclaimer.SetActive(true);
         mapDisclaimer.SetActive(true);
+        minigameDisclaimer.SetActive(true);
     }
 
     void SetDestToOrigin() {

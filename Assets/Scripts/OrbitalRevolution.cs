@@ -26,7 +26,7 @@ public class OrbitalRevolution : MonoBehaviour
 
     private bool movingRight = true;
     private bool isScoringEnabled = true;
-    private int goalScore = 3;
+    private int goalScore = 2;
 
     private float leftLimit;
     private float rightLimit;
