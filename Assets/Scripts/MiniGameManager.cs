@@ -7,9 +7,8 @@ using UnityEngine.UI;
 public class MiniGameManager : MonoBehaviour
 {
     public static MiniGameManager Instance;
-    public int score;
+    private int score;
     public TextMeshProUGUI scoreText; 
-    public Button tapButton; 
     private void Awake()
     {
         if (Instance == null)
@@ -23,7 +22,6 @@ public class MiniGameManager : MonoBehaviour
     {
         score = 0;
         UpdateScore();
-        tapButton.gameObject.SetActive(true); // Show button
     }
 
     public void ScorePoint()
@@ -34,6 +32,6 @@ public class MiniGameManager : MonoBehaviour
 
     private void UpdateScore()
     {
-        scoreText.text = "Dips Detected: " + score;
+        scoreText.text = "Dips Detected: " + score + " /3";
     }
 }

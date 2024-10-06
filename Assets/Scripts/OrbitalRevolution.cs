@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,7 +6,7 @@ using UnityEngine.UI;
 public class OrbitalRevolution : MonoBehaviour
 {
     [SerializeField]
-    public float speed = 2f;
+    public float speed = 80f;
 
     [SerializeField]
     public float distanceFromCenter = 300f;
@@ -18,13 +19,14 @@ public class OrbitalRevolution : MonoBehaviour
     public float minSize = 1f;           // Minimum size at the limits
     public float hideSize = 0f;        // Size when fully hidden behind the central star
 
-    public Canvas TaskCompletedCanvas;
+    public GameObject TaskCompletedCanvas;
 
     [SerializeField]
     public float hidingZoneWidth = 105f; // Width of the hiding zone
 
     private bool movingRight = true;
     private bool isScoringEnabled = true;
+    private int goalScore = 3;
 
     private float leftLimit;
     private float rightLimit;
@@ -48,7 +50,10 @@ public class OrbitalRevolution : MonoBehaviour
             scoreButton.onClick.AddListener(ScorePoint);
         }
 
-        TaskCompletedCanvas.enabled = false;
+        if (TaskCompletedCanvas != null)
+        {
+            TaskCompletedCanvas.SetActive(false);
+        }
     }
 
     void Update()
@@ -136,9 +141,10 @@ public class OrbitalRevolution : MonoBehaviour
             MiniGameManager.Instance.ScorePoint();
 
             // Check if the task is completed
-            if (effectiveScoreCount >= 6)
+            if (effectiveScoreCount >= goalScore)
             {
-                TaskCompletedCanvas.enabled = true;
+                TaskCompletedCanvas.SetActive(true);
+                revolvingStarImage.enabled = false;
                 scoreButton.gameObject.SetActive(false);
             }
 
